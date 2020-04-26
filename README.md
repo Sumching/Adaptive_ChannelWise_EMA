@@ -70,7 +70,7 @@ It measures the quality of images.
 
 # Experiments
 
-|      |           NIQE            |   :   |
+|      |           NIQE            | LPIPS |
 | :--: | :-----------------------: | :---: |
 | LFS  | 10.36(our implementation) | 0.109 |
 | ours |           10.51           | 0.114 |
