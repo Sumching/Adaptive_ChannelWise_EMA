@@ -33,7 +33,7 @@ class DataMyload(Dataset):
         return len(self.trainA)
 
 
-def get_loader(image_dir='../data/edges2shoes', batch_size=16, image_size=256, num_workers=20):
+def get_loader(image_dir='./data/edges2shoes', batch_size=16, image_size=256, num_workers=20):
     """Build and return a data loader."""
     transform = []
     transform.append(T.RandomHorizontalFlip())
