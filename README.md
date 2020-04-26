@@ -23,12 +23,12 @@ Here is an explanation:
          mu = torch.bmm(z_, x)       # b * k * n   , m-step
          mu = self._l2norm(mu, dim=2)
 
-         z_t = z.permute(0, 2, 1)            # b * c * k
-         self.scale_weight = self.scale_weight.view(-1, self.k,1) #scale_weight is style code
-         mu = mu * self.scale_weight         #base mu scaling with style code
-         x = z_t.matmul(mu)                  # b * c * n  , R-step
-         x = x.view(b, c, h, w)              # b * c * h * w
-         x = F.relu(x, inplace=True)
+ z_t = z.permute(0, 2, 1)            # b * c * k
+ self.scale_weight = self.scale_weight.view(-1, self.k,1) #scale_weight is style code
+ mu = mu * self.scale_weight         #base mu scaling with style code
+ x = z_t.matmul(mu)                  # b * c * n  , R-step
+ x = x.view(b, c, h, w)              # b * c * h * w
+ x = F.relu(x, inplace=True)
 ```
 
 
