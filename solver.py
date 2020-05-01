@@ -104,8 +104,19 @@ class GANModel():
 
     def forward(self, test=False):
 
-        self.fake = self.G(self.real, self.z)
-
+        self.fake, mu1, mu2, mu3 = self.G(self.real, self.z)
+        if not test:
+            with torch.no_grad():
+                mu1 = mu1.mean(dim=0, keepdim=True)
+                mu2 = mu2.mean(dim=0, keepdim=True)
+                mu3 = mu3.mean(dim=0, keepdim=True)
+                momentum = 0.9
+                self.G.G.emu1.mu *= momentum
+                self.G.G.emu1.mu += mu1 * (1 - momentum)
+                self.G.G.emu2.mu *= momentum
+                self.G.G.emu2.mu += mu2 * (1 - momentum)
+                self.G.G.emu3.mu *= momentum
+                self.G.G.emu3.mu += mu3 * (1 - momentum)
 
     def gradient_penalty(self, y, x):
         """Compute gradient penalty: (L2_norm(dy/dx) - 1)**2."""

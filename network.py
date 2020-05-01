@@ -78,12 +78,12 @@ class ResnetGenerator(nn.Module):
     def forward(self, input):
         """Standard forward"""
         h = self.model(input)
-        h, mu = self.emu1(h)
+        h, mu1 = self.emu1(h)
         h = self.model_r1(h)
-        h, mu = self.emu2(h)
+        h, mu2 = self.emu2(h)
         h = self.model_r2(h)
-        h, mu = self.emu3(h)
-        return self.model1(h)
+        h, mu3 = self.emu3(h)
+        return self.model1(h), mu1, mu2, mu3
 
 
 class ResnetBlock(nn.Module):
