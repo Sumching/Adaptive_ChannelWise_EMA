@@ -75,3 +75,13 @@ It measures the quality of images.
 | LFS  | 10.36(our implementation) | 0.109 |
 | ours |           10.51           | 0.114 |
 
+
+
+**2020.5.1 update**：
+
+Add "moving average" for optimizing base mu.
+
+|      |           NIQE            | LPIPS |
+| :--: | :-----------------------: | :---: |
+| LFS  | 10.36(our implementation) | 0.109 |
+| ours |           10.74           | 0.142 |
